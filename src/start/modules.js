@@ -1,13 +1,11 @@
-const express = require("express");
-const cors = require("cors");
-const routes = require("../api/routes");
+import express from "express";
+import cors from "cors";
+import routes from "../api/routes/index.js"; 
 
-const modules = (app) => {
+export default function startModules(app) {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   app.use(cors());
 
   app.use(routes);
-};
-
-module.exports = modules;
+}

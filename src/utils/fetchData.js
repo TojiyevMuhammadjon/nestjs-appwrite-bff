@@ -1,15 +1,25 @@
-import fetch from 'node-fetch';
+import fetch from "node-fetch";
 
-export async function fetchDataFromOlx(adId) {
-  const targetingDataUrl = `https://www.olx.uz/api/v1/targeting/data/?page=ad&params%5Bad_id%5D=${adId}&dfp_user_id=0&advertising_test_token=`;
 
+const fetchDataFromOlx = async (adId, res) => {
   try {
-    const targetingResponse = await fetch(targetingDataUrl);
-    const targetingData = await targetingResponse.json();
-    const adTitle = targetingData.data.targeting.ad_title;
-    return adTitle;
+    const response = await fetch(
+      `https://www.olx.uz/api/v1/targeting/data/?page=ad&params%5Bad_id%5D=${adId}&dfp_user_id=0&advertising_test_token=`
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+      return data;
+    } else {
+      console.error("Error fetching OLX data:", response.statusText);
+      res.status(500).json({ error: "Failed to fetch OLX data" });
+      return null;
+    }
   } catch (error) {
-    console.error('Error fetching data from OLX:', error);
-    throw new Error('Failed to fetch OLX data');
+    console.error("Error fetching OLX data:", error);
+    res.status(500).json({ error: "Failed to fetch OLX data" });
+    return null;
   }
-}
+};
+
+export default fetchDataFromOlx;

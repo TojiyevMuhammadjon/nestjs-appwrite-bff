@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const olxParseRequestSchema = new mongoose.Schema({
   area_from: { type: Number, required: true },
@@ -42,9 +42,6 @@ const olxParseRequestSchema = new mongoose.Schema({
   },
 });
 
-const OlxParseRequest = mongoose.model(
-  "OlxParseRequest",
-  olxParseRequestSchema
-);
+const OlxParseRequest = mongoose.model("OlxParseRequest", olxParseRequestSchema);
 
-module.exports = OlxParseRequest;
+export default OlxParseRequest;

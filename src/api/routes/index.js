@@ -1,4 +1,5 @@
-const router = require("./olx.data.route");
-const fetchData = require("./olx.fetch.data")
+import router from "./olx.data.route.js"; 
+import fetchData from "./olx.fetch.data.js"; 
+import olx from "./olx.route.js"; 
 
-module.exports = [router, fetchData]
+export default [router, fetchData, olx];

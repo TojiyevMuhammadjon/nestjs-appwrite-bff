@@ -1,5 +1,5 @@
-const fetch = require('node-fetch');
-const fetchDataFromOlx = require('../../utils/fetchData');
+import axios from "axios";
+import fetchDataFromOlx from "../../utils/fetchData.js"; // Update the file extension as needed
 
 const fetchData = async (req, res) => {
   try {
@@ -16,18 +16,13 @@ const getLimitedPhones = async (req, res) => {
   const offerId = req.params.offerId;
   const limitedPhonesUrl = `https://www.olx.uz/api/v1/offers/${offerId}/limited-phones/`;
 
-  fetch(limitedPhonesUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      res.json(data);
-    })
-    .catch((error) => {
-      console.error("Error fetching limited phones data:", error);
-      res.status(500).json({ error: "Failed to fetch limited phones data" });
-    });
+  try {
+    const response = await axios.get(limitedPhonesUrl);
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error fetching limited phones data:", error);
+    res.status(500).json({ error: "Failed to fetch limited phones data" });
+  }
 };
 
-module.exports = {
-  fetchData,
-  getLimitedPhones,
-};
+export { fetchData, getLimitedPhones };

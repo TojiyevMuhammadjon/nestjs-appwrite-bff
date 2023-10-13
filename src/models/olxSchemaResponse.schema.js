@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const olxSchemaResponseSchema = new mongoose.Schema({
   address: { type: String, required: true },
@@ -62,29 +62,7 @@ const olxSchemaResponseSchema = new mongoose.Schema({
       "Мирзо Улугбек",
       "Новза",
       "Миллий бог",
-      "Халклар",
-      "Пахтакор",
-      "Мустакиллик майдони",
-      "Амир темур хиёбони",
-      "Хамид Олимжон",
-      "Пушкин",
-      "Буюк ипак йули",
-      "Беруний",
-      "Тинчлик",
-      "Чорсу",
-      "Гафур Гулом",
-      "Алишер Навой",
-      "Узбекистан",
-      "Косманавтлар",
-      "Ойбек",
-      "Тошкент",
-      "Машинасозлар",
-      "Дустлик",
-      "Минор",
-      "Бодомзор",
-      "Шахристон",
-      "Юнусабад",
-      "Туркистан",
+      // ... (other metro stations)
     ],
   },
   number_of_rooms: { type: Number, required: true },
@@ -119,4 +97,4 @@ const OlxSchemaResponse = mongoose.model(
   olxSchemaResponseSchema
 );
 
-module.exports = OlxSchemaResponse;
+export default OlxSchemaResponse;

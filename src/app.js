@@ -1,6 +1,9 @@
-const express = require("express");
+// Import required modules using ESM syntax
+import express from "express";
+import startModules from "./start/modules.js";
+import startRun from "./start/run.js";
+
 const app = express();
 
-require("./start/modules")(app);
-require("./start/run")(app);
-
+startModules(app);
+startRun(app);

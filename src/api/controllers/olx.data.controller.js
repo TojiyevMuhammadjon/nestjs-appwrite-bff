@@ -1,5 +1,5 @@
-const OlxParseRequest = require("../../models/olxParseRequest.schema");
-const OlxSchemaResponse = require("../../models/olxSchemaResponse.schema");
+import OlxParseRequest from '../../models/olxParseRequest.schema.js'; // Update the file extension as needed
+import OlxSchemaResponse from '../../models/olxSchemaResponse.schema.js'; // Update the file extension as needed
 
 const olxRequest = async (req, res) => {
   try {
@@ -25,7 +25,4 @@ const olxResponse = async (req, res) => {
   }
 };
 
-module.exports = {
-  olxRequest,
-  olxResponse,
-};
+export { olxRequest, olxResponse };
